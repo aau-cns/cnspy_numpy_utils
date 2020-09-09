@@ -16,7 +16,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 # Requirements:
-# sudo pip install numpy
+# numpy
+########################################################################################################################
 
 import numpy as np
 
