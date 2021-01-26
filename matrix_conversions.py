@@ -23,6 +23,19 @@ import numpy as np
 
 
 def tri_vec_to_mat(tri_vec, n=None):
+    """"
+    converts an upper triangular vector into a symmetric matrix.
+    Example:
+    >>    v = np.array([11, 12, 13, 22, 23, 33])
+    >>    M = tri_vec_to_mat(tri_vec=v, n=3)  # [[11, 12, 13], [21, 22, 23], [31, 32, 33]]
+
+    Input:
+    tri_vec -- numpy.ndarray, vector [1xM],
+
+    Output:
+    P -- numpy.ndarray, square matrix [NxN]
+    """
+
     if n is None:
         m = len(tri_vec)
         # m = n(n+1)/2
@@ -40,7 +53,49 @@ def tri_vec_to_mat(tri_vec, n=None):
 
 
 def mat_to_tri_vec(P):
+    """"
+    converts an upper triangular matrix of a symmetric matrix into a vector.
+
+    Example:
+    >> M = np.array([[11, 12, 13], [21, 22, 23], [31, 32, 33]])
+    >> v = mat_to_tri_vec(P=M) # [11 12 13 22 23 33]
+
+
+    Input:
+    P -- numpy.ndarray, square matrix [NxN]
+
+    Output:
+    tri_vec -- numpy.ndarray, vector [1xM],
+    """
     n = P.shape[0]
     # m = n * (n + 1) / 2
     idxs = np.triu_indices(n=n, k=0)
     return P[idxs]
+
+
+########################################################################################################################
+#################################################### T E S T ###########################################################
+########################################################################################################################
+import unittest
+
+
+class MatrixConversion_Test(unittest.TestCase):
+    def test_tri_vec_to_mat(self):
+        arr = [11, 12, 13, 22, 23, 33]
+        v = np.array(arr)
+        M = tri_vec_to_mat(tri_vec=v, n=3)
+
+        print('got: ' + str(M))
+        self.assertTrue(M[3 - 1, 2 - 1] == 23)
+        self.assertTrue(M[1 - 1, 2 - 1] == 12)
+
+    def test_mat_to_tri_vec(self):
+        M = np.array([[11, 12, 13], [21, 22, 23], [31, 32, 33]])
+
+        v = mat_to_tri_vec(P=M)
+        print('got: ' + str(v))
+        self.assertTrue(v[3] == 22)
+
+
+if __name__ == "__main__":
+    unittest.main()
