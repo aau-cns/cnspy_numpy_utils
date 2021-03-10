@@ -10,6 +10,16 @@ Most important functions:
 1. [numpy_statistics(vNumpy](./numpy_statistics.py)
 1. [print_statistics(metrics](./numpy_statistics.py)
 
+## Installation
+
+Install the current code base from GitHub and pip install a link to that cloned copy
+```
+git clone https://gitlab.aau.at/aau-cns/py3_pkgs/numpy_utils.git
+cd numpy_utils
+pip install -e .
+```
+
+
 ## Dependencies
 
 * [numpy]()
