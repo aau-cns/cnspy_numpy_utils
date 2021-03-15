@@ -72,30 +72,3 @@ def mat_to_tri_vec(P):
     idxs = np.triu_indices(n=n, k=0)
     return P[idxs]
 
-
-########################################################################################################################
-#################################################### T E S T ###########################################################
-########################################################################################################################
-import unittest
-
-
-class MatrixConversion_Test(unittest.TestCase):
-    def test_tri_vec_to_mat(self):
-        arr = [11, 12, 13, 22, 23, 33]
-        v = np.array(arr)
-        M = tri_vec_to_mat(tri_vec=v, n=3)
-
-        print('got: ' + str(M))
-        self.assertTrue(M[3 - 1, 2 - 1] == 23)
-        self.assertTrue(M[1 - 1, 2 - 1] == 12)
-
-    def test_mat_to_tri_vec(self):
-        M = np.array([[11, 12, 13], [21, 22, 23], [31, 32, 33]])
-
-        v = mat_to_tri_vec(P=M)
-        print('got: ' + str(v))
-        self.assertTrue(v[3] == 22)
-
-
-if __name__ == "__main__":
-    unittest.main()
