@@ -20,38 +20,39 @@
 # numpy
 ########################################################################################################################
 import unittest
-from cnspy_numpy_utils.accumulated_distance import *
+import numpy as np
+import cnspy_numpy_utils.accumulated_distance as numpy_utils
 
 class AccumulatedDistance_Test(unittest.TestCase):
     def test_accumulated_distance(self):
         arr = [0, 1, 2, 3, 4, 5, -5]
         v = np.array(arr)
-        arr_acc = accumulated_distance(p_vec=v)
+        arr_acc = numpy_utils.accumulated_distance(p_vec=v)
 
         print('got: ' + str(arr_acc))
         self.assertTrue(arr_acc[0] == 1)
 
-        arr_acc = accumulated_distance(p_vec=np.array([]))
+        arr_acc = numpy_utils.accumulated_distance(p_vec=np.array([]))
         print('got: ' + str(arr_acc))
 
         M = np.array([[0, 1, 2, 3, 4, 5], [0, 1, 2, 3, 4, 5]])
         # M = M.T
-        arr_acc = accumulated_distance(p_vec=M)
+        arr_acc = numpy_utils.accumulated_distance(p_vec=M)
         print('got: ' + str(arr_acc))
 
     def test_total_distance(self):
         M = np.array([0, 1, 2, 3, 4, 5, -5])
 
-        v = total_distance(p_vec=M)
+        v = numpy_utils.total_distance(p_vec=M)
         print('got: ' + str(v))
         self.assertTrue(v == 15)
 
-        v = total_distance(p_vec=np.array([]))
+        v = numpy_utils.total_distance(p_vec=np.array([]))
         print('got: ' + str(v))
 
         M = np.array([[0, 1, 2, 3, 4, 5], [0, 1, 2, 3, 4, 5]])
         M = M.T
-        v = total_distance(p_vec=M)
+        v = numpy_utils.total_distance(p_vec=M)
         print('got: ' + str(v))  # sqrt(2) * 5
 
 
