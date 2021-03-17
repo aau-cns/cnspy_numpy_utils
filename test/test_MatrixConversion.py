@@ -20,7 +20,7 @@
 # numpy
 ########################################################################################################################
 import unittest
-from numpy_utils.matrix_conversions import *
+from cnspy_numpy_utils.matrix_conversions import *
 
 class MatrixConversion_Test(unittest.TestCase):
     def test_tri_vec_to_mat(self):

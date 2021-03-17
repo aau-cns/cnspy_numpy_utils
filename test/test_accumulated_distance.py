@@ -20,7 +20,7 @@
 # numpy
 ########################################################################################################################
 import unittest
-from numpy_utils.accumulated_distance import *
+from cnspy_numpy_utils.accumulated_distance import *
 
 class AccumulatedDistance_Test(unittest.TestCase):
     def test_accumulated_distance(self):

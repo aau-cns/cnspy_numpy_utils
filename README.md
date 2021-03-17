@@ -1,4 +1,4 @@
-# Numpy_Utils Package
+# cnspy_numpy_utils Package
 
 A package holding useful scripts based on the numpy package, that cannot be associated to any other (dangling code, that is used in different places). 
 
@@ -14,8 +14,8 @@ Most important functions:
 
 Install the current code base from GitHub and pip install a link to that cloned copy
 ```
-git clone https://gitlab.aau.at/aau-cns/py3_pkgs/numpy_utils.git
-cd numpy_utils
+git clone https://gitlab.aau.at/aau-cns/py3_pkgs/cnspy_numpy_utils.git
+cd cnspy_numpy_utils
 pip install -e .
 ```
 
