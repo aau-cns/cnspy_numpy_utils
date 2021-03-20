@@ -18,7 +18,10 @@ git clone https://github.com/aau-cns/cnspy_numpy_utils.git
 cd cnspy_numpy_utils
 pip install -e .
 ```
-
+or the [official package](https://pypi.org/project/cnspy-numpy-utils/) via
+```commandline
+pip install cnspy-numpy-utils
+```
 
 ## Dependencies
 
