@@ -26,8 +26,8 @@ def numpy_statistics(vNumpy, prefix=''):
     if prefix:
         metrics = {
             prefix + '.pairs': len(vNumpy),
-            prefix + '.rmse': np.sqrt(np.dot(vNumpy, vNumpy) / len(vNumpy)),
-            prefix + '.mean': np.mean(vNumpy),
+            prefix + '.rmse': np.sqrt(np.square(vNumpy).mean(axis=0)),
+            prefix + '.mean': np.mean(vNumpy, axis=1),
             prefix + '.median': np.median(vNumpy),
             prefix + '.std': np.std(vNumpy),
             prefix + '.var': np.square(np.std(vNumpy)),
@@ -37,23 +37,34 @@ def numpy_statistics(vNumpy, prefix=''):
     else:
         metrics = {
             'pairs': len(vNumpy),
-            'rmse': np.sqrt(np.dot(vNumpy, vNumpy) / len(vNumpy)),
-            'mean': np.mean(vNumpy),
-            'median': np.median(vNumpy),
-            'std': np.std(vNumpy),
-            'var': np.square(np.std(vNumpy)),
-            'min': np.min(vNumpy),
-            'max': np.max(vNumpy)
+            'rmse': np.sqrt(np.square(vNumpy).mean(axis=0)),
+            'mean': np.mean(vNumpy, axis=0),
+            'median': np.median(vNumpy, axis=0),
+            'std': np.std(vNumpy, axis=0),
+            'var': np.square(np.std(vNumpy, axis=0)),
+            'min': np.min(vNumpy, axis=0),
+            'max': np.max(vNumpy, axis=0)
         }
     return metrics
 
 
-def print_statistics(metrics, desc='error'):
-    print("samples   %d" % (metrics['pairs']))
-    print("%s.rmse   %f m" % (str(desc), metrics['rmse']))
-    print("%s.mean   %f m" % (str(desc), metrics['mean']))
-    print("%s.median %f m" % (str(desc), metrics['median']))
-    print("%s.std    %f m" % (str(desc), metrics['std']))
-    print("%s.var    %f m" % (str(desc), metrics['var']))
-    print("%s.min    %f m" % (str(desc), metrics['min']))
-    print("%s.max    %f m" % (str(desc), metrics['max']))
+def print_statistics(metrics, desc='error', file=None):
+    if file:
+        print("samples   %d" % (metrics['pairs']), file=file)
+        print("%s.rmse   %s" % (str(desc), str(metrics['rmse'])), file=file)
+        print("%s.mean   %s" % (str(desc), str(metrics['mean'])), file=file)
+        print("%s.median %s" % (str(desc), str(metrics['median'])), file=file)
+        print("%s.std    %s" % (str(desc), str(metrics['std'])), file=file)
+        print("%s.var    %s" % (str(desc), str(metrics['var'])), file=file)
+        print("%s.min    %s" % (str(desc), str(metrics['min'])), file=file)
+        print("%s.max    %s" % (str(desc), str(metrics['max'])), file=file)
+    else:
+        print("samples   %d" % (metrics['pairs']))
+        print("%s.rmse   %s" % (str(desc), str(metrics['rmse'])))
+        print("%s.mean   %s" % (str(desc), str(metrics['mean'])))
+        print("%s.median %s" % (str(desc), str(metrics['median'])))
+        print("%s.std    %s" % (str(desc), str(metrics['std'])))
+        print("%s.var    %s" % (str(desc), str(metrics['var'])))
+        print("%s.min    %s" % (str(desc), str(metrics['min'])))
+        print("%s.max    %s" % (str(desc), str(metrics['max'])))
+str()
