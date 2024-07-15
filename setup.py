@@ -9,13 +9,9 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-# Get the release/version string
-with open(path.join(here, 'RELEASE'), encoding='utf-8') as f:
-    release = f.read()
-
 setup(
     name='cnspy_numpy_utils',
-    version=release,
+    version="0.2.1",
     author='Roland Jung',
     author_email='roland.jung@aau.at',    
     description='Some utility functions for numpy data types',
